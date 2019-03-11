@@ -1,12 +1,15 @@
 {
   "name": "rrreol",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "repository": "https://github.com/Himself65/rrreol.git",
-  "author": "himself65 <himself6565@gmail.com>",
   "license": "GPL3.0",
+  "author": "himself65 <himself6565@gmail.com>",
   "scripts": {
-    "lint": "eslint ./**/*.js"
+    "lint": "lerna run lint --parallel"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -26,6 +29,7 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "jest": "^24.3.1"
+    "jest": "^24.3.1",
+    "lerna": "^3.13.1"
   }
 }

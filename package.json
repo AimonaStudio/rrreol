@@ -9,7 +9,8 @@
   "license": "GPL3.0",
   "author": "himself65 <himself6565@gmail.com>",
   "scripts": {
-    "lint": "lerna run lint --parallel"
+    "lint": "lerna run lint --parallel",
+    "build": "lerna run build"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",

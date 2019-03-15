@@ -1,32 +1,29 @@
-export class Judge {
+import { EventEmitter } from 'events'
+import { JudgeWrapper } from './judgeWrapper'
+import { isString } from './utils'
+
+export class Judge extends EventEmitter {
   constructor (props) {
-    // todo
-    this._input = props.input || ''
-    this._output = props.output || ''
-    if (Array.isArray(this._input)) {
-
+    super()
+    this.__program = {
+      output: []
     }
-    if (Array.isArray(this._output)) {
-
-    }
-    this.result = null
-    this._judgedProgram = {
-      path: props.path,
-      result: null
+    if (isString(props)) {
+      this.__config = {
+        path: props
+      }
+    } else {
+      // todo
+      this.__config = Object.assign({}, props)
     }
   }
 
-  async exec () {
-    // judge
-    // to judge
-
-    // after exec
-    this.result = this._judgedProgram.result
+  line (num) {
+    return new JudgeWrapper(this?.__program?.output[num + 1] || null, this)
   }
 
-  _loadFiles (files) {
-    // todo
-    // load strings from files
+  maxline () {
+    return new JudgeWrapper(this?.__program?.output.length || -1, this)
   }
 }
 

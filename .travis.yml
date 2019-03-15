@@ -15,15 +15,14 @@ install:
 
 matrix:
   include:
-    - name: "First commit message adheres to guidelines at <a href=\"https://goo.gl/p2fr5Q\">https://goo.gl/p2fr5Q</a>"
-        if: type = pull_request
-        language: node_js
-        node_js: "node"
-        script:
-          - if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
-            bash -x tools/lint-pr-commit-message.sh ${TRAVIS_PULL_REQUEST};
-            fi
-    - name: 'Lint and test'
+    - stage: pre-test
+      name: "First commit message adheres to guidelines at <a href=\"https://goo.gl/p2fr5Q\">https://goo.gl/p2fr5Q</a>"
+      script:
+        - if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
+          bash -x tools/lint-pr-commit-message.sh ${TRAVIS_PULL_REQUEST};
+          fi
+    - stage: test
+      name: 'Lint and test'
       before_script:
         - yarn global add codecov
       script:

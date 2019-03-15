@@ -15,8 +15,7 @@ install:
 
 jobs:
   include:
-    - stage: pre-test
-      name: "First commit message adheres to guidelines at <a href=\"https://goo.gl/p2fr5Q\">https://goo.gl/p2fr5Q</a>"
+    - name: "First commit message adheres to guidelines at <a href=\"https://goo.gl/p2fr5Q\">https://goo.gl/p2fr5Q</a>"
         if: type = pull_request
         language: node_js
         node_js: "node"
@@ -24,8 +23,7 @@ jobs:
           - if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
             bash -x tools/lint-pr-commit-message.sh ${TRAVIS_PULL_REQUEST};
             fi
-    - stage: test
-      name: "Lint and Test"
+    - name: "Lint and Test"
       before_script:
         - yarn global add codecov
       script:

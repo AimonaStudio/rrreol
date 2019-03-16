@@ -1,6 +1,9 @@
 {
   "root": true,
   "parser": "babel-eslint",
+  "parserOptions": {
+    "babelOptions": "./babel.config.js"
+  },
   "extends": "standard",
   "rules": {
     "semi": "off",

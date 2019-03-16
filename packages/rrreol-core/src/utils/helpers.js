@@ -1,3 +1,4 @@
-export function isString (val) {
-  return typeof val === 'string' || val instanceof String
+export const compilerConfig = {
+  'c': ['gcc', '-pipe'],
+  'c++': ['g++', '-pipe']
 }

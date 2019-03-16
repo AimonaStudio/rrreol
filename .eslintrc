@@ -3,6 +3,7 @@
   "parser": "babel-eslint",
   "extends": "standard",
   "rules": {
+    "semi": "off",
     "no-unused-vars": "off"
   }
 }

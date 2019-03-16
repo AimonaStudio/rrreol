@@ -1,29 +1,45 @@
+import { isString } from 'lodash'
+import { curry } from 'ramda'
 import { EventEmitter } from 'events'
 import { JudgeWrapper } from './judgeWrapper'
-import { isString } from './utils'
 
 export class Judge extends EventEmitter {
   constructor (props) {
     super()
-    this.__program = {
-      output: []
-    }
+    let config = {}
     if (isString(props)) {
-      this.__config = {
-        path: props
+      config = {
+
       }
-    } else {
-      // todo
-      this.__config = Object.assign({}, props)
     }
   }
 
-  line (num) {
-    return new JudgeWrapper(this?.__program?.output[num + 1] || null, this)
+  exec () {
+  }
+
+  line (val) {
+    return JudgeWrapper.of.call(this, val)
+  }
+
+  lines () {
+    const count = 1 // fixme: bind the real val
+    return JudgeWrapper.of.call(this, curry((val) => {
+      return val === count
+    }))
   }
 
   maxline () {
-    return new JudgeWrapper(this?.__program?.output.length || -1, this)
+    const count = 1 // fixme: bind the real val
+    return JudgeWrapper.of.call(this, curry((val) => {
+      return val >= count
+    }))
+  }
+
+  minline () {
+    const count = 2 // fixme: bind the real val
+    return JudgeWrapper.of.call(this, curry((val) => {
+      return val <= count
+    }))
   }
 }
 

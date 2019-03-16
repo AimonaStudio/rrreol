@@ -24,8 +24,9 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
+    "@types/lodash": "^4.14.123",
     "@types/node": "^11.11.0",
-    "babel-eslint": "^10.0.1",
+    "@types/ramda": "^0.26.3",
     "babel-jest": "^24.5.0",
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
@@ -33,5 +34,9 @@
     "jest-serializer-html": "^6.0.0",
     "rollup": "^1.6.0",
     "rollup-plugin-node-resolve": "^4.0.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "ramda": "^0.26.1"
   }
 }

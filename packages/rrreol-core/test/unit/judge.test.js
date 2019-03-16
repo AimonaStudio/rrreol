@@ -1,6 +1,6 @@
 import { Judge } from '@/judge'
 
-describe('base test', () => {
+describe('Judge base test', () => {
   it('should init success', () => {
     const judge = new Judge('1')
     const judge2 = judge

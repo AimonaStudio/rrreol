@@ -3,6 +3,8 @@ module.exports = {
     '@babel/preset-env'
   ],
   plugins: [
+    '@babel/plugin-transform-runtime',
+    '@babel/plugin-proposal-nullish-coalescing-operator',
     '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-proposal-class-properties',
     ['@babel/plugin-proposal-pipeline-operator', { 'proposal': 'minimal' }],

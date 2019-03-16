@@ -1,32 +1,45 @@
-export class Judge {
+import { isString } from 'lodash'
+import { curry } from 'ramda'
+import { EventEmitter } from 'events'
+import { JudgeWrapper } from './judgeWrapper'
+
+export class Judge extends EventEmitter {
   constructor (props) {
-    // todo
-    this._input = props.input || ''
-    this._output = props.output || ''
-    if (Array.isArray(this._input)) {
+    super()
+    let config = {}
+    if (isString(props)) {
+      config = {
 
-    }
-    if (Array.isArray(this._output)) {
-
-    }
-    this.result = null
-    this._judgedProgram = {
-      path: props.path,
-      result: null
+      }
     }
   }
 
-  async exec () {
-    // judge
-    // to judge
-
-    // after exec
-    this.result = this._judgedProgram.result
+  exec () {
   }
 
-  _loadFiles (files) {
-    // todo
-    // load strings from files
+  line (val) {
+    return JudgeWrapper.of.call(this, val)
+  }
+
+  lines () {
+    const count = 1 // fixme: bind the real val
+    return JudgeWrapper.of.call(this, curry((val) => {
+      return val === count
+    }))
+  }
+
+  maxline () {
+    const count = 1 // fixme: bind the real val
+    return JudgeWrapper.of.call(this, curry((val) => {
+      return val >= count
+    }))
+  }
+
+  minline () {
+    const count = 2 // fixme: bind the real val
+    return JudgeWrapper.of.call(this, curry((val) => {
+      return val <= count
+    }))
   }
 }
 

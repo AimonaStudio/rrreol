@@ -10,6 +10,7 @@
   "author": "himself65 <himself6565@gmail.com>",
   "scripts": {
     "lint": "lerna run lint --parallel",
+    "test": "lerna run test",
     "build": "lerna run build"
   },
   "devDependencies": {

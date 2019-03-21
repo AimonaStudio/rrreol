@@ -1899,9 +1899,9 @@
   integrity sha1-TEj+2VjW3PlIcZWg72RW1fbgFjo=
 
 "@types/ramda@^0.26.3":
-  version "0.26.3"
-  resolved "http://registry.npm.taobao.org/@types/ramda/download/@types/ramda-0.26.3.tgz#e6c35cb0a75843c9cfe58e0be294ffbc4480f33e"
-  integrity sha1-5sNcsKdYQ8nP5Y4L4pT/vESA8z4=
+  version "0.26.4"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.26.4.tgz#09a2d7a2c68d891d9e7473425b89194edf7310b7"
+  integrity sha512-yx/V0bO47eqG5JU3xoHPCgBLinziZ6hNV/anEHJFMA2RDMADvo5VOQQlMFIHgsb8ZS7Z4RJmGkp3mW+tKZmM2A==
 
 "@types/react-test-renderer@^16.8.1":
   version "16.8.1"

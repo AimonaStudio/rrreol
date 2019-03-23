@@ -1858,6 +1858,18 @@
   resolved "http://registry.npm.taobao.org/@types/estree/download/@types/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
   integrity sha1-4Xfmme4bjCLSMXTKqnQiZEOJUJ8=
 
+"@types/fs-extra@^5.0.5":
+  version "5.0.5"
+  resolved "http://registry.npm.taobao.org/@types/fs-extra/download/@types/fs-extra-5.0.5.tgz#080d90a792f3fa2c5559eb44bd8ef840aae9104b"
+  integrity sha1-CA2Qp5Lz+ixVWetEvY74QKrpEEs=
+  dependencies:
+    "@types/node" "*"
+
+"@types/is-number@^3.0.1":
+  version "3.0.1"
+  resolved "http://registry.npm.taobao.org/@types/is-number/download/@types/is-number-3.0.1.tgz#94d2c21efb00a8650e7f1af1da735a829a861295"
+  integrity sha1-lNLCHvsAqGUOfxrx2nNagpqGEpU=
+
 "@types/istanbul-lib-coverage@^1.1.0":
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/@types/istanbul-lib-coverage/download/@types/istanbul-lib-coverage-1.1.0.tgz#2cc2ca41051498382b43157c8227fea60363f94a"
@@ -2509,17 +2521,14 @@ babel-core@^6.0.0, babel-core@^6.26.0:
     slash "^1.0.0"
     source-map "^0.5.7"
 
-babel-eslint@^10.0.1:
-  version "10.0.1"
-  resolved "http://registry.npm.taobao.org/babel-eslint/download/babel-eslint-10.0.1.tgz#919681dc099614cd7d31d45c8908695092a1faed"
-  integrity sha1-kZaB3AmWFM19MdRciQhpUJKh+u0=
+babel-eslint@^11.0.0-beta.0:
+  version "11.0.0-beta.0"
+  resolved "http://registry.npm.taobao.org/babel-eslint/download/babel-eslint-11.0.0-beta.0.tgz#3645b9b84d848e070e0afadc95d0c8ff96f4c63a"
+  integrity sha1-NkW5uE2EjgcOCvrcldDI/5b0xjo=
   dependencies:
-    "@babel/code-frame" "^7.0.0"
-    "@babel/parser" "^7.0.0"
-    "@babel/traverse" "^7.0.0"
-    "@babel/types" "^7.0.0"
     eslint-scope "3.7.1"
     eslint-visitor-keys "^1.0.0"
+    semver "^5.6.0"
 
 babel-generator@^6.18.0, babel-generator@^6.26.0:
   version "6.26.1"
@@ -5031,7 +5040,7 @@ from2@^2.1.0:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
-fs-extra@^7.0.0:
+fs-extra@^7.0.0, fs-extra@^7.0.1:
   version "7.0.1"
   resolved "http://registry.npm.taobao.org/fs-extra/download/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
   integrity sha1-TxicRKoSO4lfcigE9V6iPq3DSOk=
@@ -6074,6 +6083,11 @@ is-number@^4.0.0:
   version "4.0.0"
   resolved "http://registry.npm.taobao.org/is-number/download/is-number-4.0.0.tgz#0026e37f5454d73e356dfe6564699867c6a7f0ff"
   integrity sha1-ACbjf1RU1z41bf5lZGmYZ8an8P8=
+
+is-number@^7.0.0:
+  version "7.0.0"
+  resolved "http://registry.npm.taobao.org/is-number/download/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
+  integrity sha1-dTU0W4lnNNX4DE0GxQlVUnoU8Ss=
 
 is-obj@^1.0.0:
   version "1.0.1"

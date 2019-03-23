@@ -24,6 +24,8 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
+    "@types/fs-extra": "^5.0.5",
+    "@types/is-number": "^3.0.1",
     "@types/lodash": "^4.14.123",
     "@types/node": "^11.11.0",
     "@types/ramda": "^0.26.3",
@@ -36,6 +38,8 @@
     "rollup-plugin-node-resolve": "^4.0.1"
   },
   "dependencies": {
+    "fs-extra": "^7.0.1",
+    "is-number": "^7.0.0",
     "lodash": "^4.17.11",
     "ramda": "^0.26.1"
   }

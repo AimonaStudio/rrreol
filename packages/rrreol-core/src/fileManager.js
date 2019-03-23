@@ -1,9 +1,12 @@
-import * as fs from 'fs'
+import fs from 'fs-extra'
 
 export class FileManager {
-  constructor (props) {
-    // todo
-    this.__config = Object.assign({}, props)
+  constructor (path) {
+    this.filePath = path || ''
+  }
+
+  save () {
+
   }
 }
 

@@ -1,4 +1,10 @@
 node_modules
 .log
-.idea
+
+# Test files and folders
 coverage
+*.test.out
+
+# IDE config
+.idea
+.vscode

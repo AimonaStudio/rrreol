@@ -16,10 +16,10 @@ install:
 jobs:
   include:
     - stage: pre-test
-      name: "First commit message adheres to guidelines at <a href=\"https://goo.gl/p2fr5Q\">https://goo.gl/p2fr5Q</a>"
+      name: 'Lint First commit message'
       script:
         - if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
-          bash -x tools/lint-pr-commit-message.sh ${TRAVIS_PULL_REQUEST};
+          commitlint-travis;
           fi
     - stage: test
       name: 'Lint and test'
@@ -30,3 +30,7 @@ jobs:
         - lerna run test:coverage -- -i
       after_script:
         - codecov
+#    - stage: build
+#      name: 'Build'
+#      script:
+#        - yarn run build

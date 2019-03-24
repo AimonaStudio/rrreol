@@ -8,6 +8,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/AimonaStudio/rrreol.svg?style=social)
 ![GitHub watchers](https://img.shields.io/github/watchers/AimonaStudio/rrreol.svg?style=social)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/abb20485cab94e9fb94c70decab47c65)](https://app.codacy.com/app/AimonaStudio/rrreol?utm_source=github.com&utm_medium=referral&utm_content=AimonaStudio/rrreol&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.com/AimonaStudio/rrreol.svg?branch=master)](https://travis-ci.com/AimonaStudio/rrreol)
 [![codecov](https://codecov.io/gh/AimonaStudio/rrreol/branch/master/graph/badge.svg)](https://codecov.io/gh/AimonaStudio/rrreol)
 [![CodeFactor](https://www.codefactor.io/repository/github/aimonastudio/rrreol/badge)](https://www.codefactor.io/repository/github/aimonastudio/rrreol)

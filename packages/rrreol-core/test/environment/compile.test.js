@@ -1,6 +1,6 @@
 import * as cp from 'child_process'
-import fs from 'fs-extra'
 import * as path from 'path'
+import fs from 'fs-extra'
 import { getFileName } from '@/utils/helpers'
 
 describe('Environment test', () => {
@@ -26,6 +26,11 @@ describe('Environment test', () => {
     })
   })
 
-  it('should cin.test.out run success', () => {
+  // remove output files after finished
+  afterAll(() => {
+    input.forEach(v => {
+      const name = getFileName(v)
+      fs.removeSync(path.join(root, `${name}.test.out`))
+    })
   })
 })

@@ -20,11 +20,13 @@ export class Compiler {
     const input = this.__path
     if (!output) throw new TypeError()
     // fixme: add more command options
-    const process = cp.spawn('g++', ['-o', output, input])
-    return new Promise((resolve, reject) => {
-      process.on('close', () => resolve(output))
-      process.on('error', reject)
-    })
+    const process = cp.spawnSync('g++', ['-o', output, input])
+    if (process.error) {
+      throw process.error
+    } else if (String(process.stderr).trim() !== '') {
+      throw Error(process.stderr)
+    }
+    return output
   }
 }
 

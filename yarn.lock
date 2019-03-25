@@ -2152,7 +2152,7 @@
   resolved "http://registry.npm.taobao.org/@types/mime/download/@types/mime-2.0.1.tgz#dc488842312a7f075149312905b5e3c0b054c79d"
   integrity sha1-3EiIQjEqfwdRSTEpBbXjwLBUx50=
 
-"@types/node@*", "@types/node@^11.11.0", "@types/node@^11.9.5":
+"@types/node@*", "@types/node@^11.11.0", "@types/node@^11.11.6":
   version "11.11.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.11.6.tgz#df929d1bb2eee5afdda598a41930fe50b43eaa6a"
   integrity sha512-Exw4yUWMBXM3X+8oqzJNRqZSwUAaS4+7NdvHqQuFi/d+synz++xmX3QIf+BFqneW8N31R8Ky+sikfZUXq07ggQ==
@@ -2163,9 +2163,9 @@
   integrity sha1-TEj+2VjW3PlIcZWg72RW1fbgFjo=
 
 "@types/ramda@^0.26.3":
-  version "0.26.4"
-  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.26.4.tgz#09a2d7a2c68d891d9e7473425b89194edf7310b7"
-  integrity sha512-yx/V0bO47eqG5JU3xoHPCgBLinziZ6hNV/anEHJFMA2RDMADvo5VOQQlMFIHgsb8ZS7Z4RJmGkp3mW+tKZmM2A==
+  version "0.26.5"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.26.5.tgz#99f62d7c29fc9a5381008128e33c08e951fbb620"
+  integrity sha512-0W7/G3OfpqoNLp10UA+2a7cKNZeUaqSULdCrHU8Xrum1O+ZZQR9dk3CgNFD2u2+eJ5PfTL3kk/xzrfgjFf6f8w==
 
 "@types/range-parser@*":
   version "1.2.3"
@@ -10242,12 +10242,12 @@ rollup-plugin-node-resolve@^4.0.1:
     resolve "^1.10.0"
 
 rollup@^1.6.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.7.0.tgz#2f5063c0f344f2225d1077655dc54d105a512bb2"
-  integrity sha512-hjuWSCgoQsFSTsmsNP4AH1l1kfkFqW82gW00V9nL81Zr3JtnKn3rvxh18jUAAEMb7qNoHj21PR5SqbK2mhBgMg==
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.7.2.tgz#6a2c50843915cba2c1432028e741f2ccb39e8ca3"
+  integrity sha512-HdbjbHsvoLDwJU/lWEyktVlLdXR7mtnNxRnzaDb+fiNiboAxDYCpwLz1zLGI3+k890PacAptSGrqJLJnABMKJg==
   dependencies:
     "@types/estree" "0.0.39"
-    "@types/node" "^11.9.5"
+    "@types/node" "^11.11.6"
     acorn "^6.1.1"
 
 rsvp@^3.3.3:

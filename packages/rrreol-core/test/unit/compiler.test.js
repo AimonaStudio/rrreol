@@ -1,7 +1,8 @@
 import fs from 'fs-extra'
-import { resolve } from 'path'
+import { resolve, join } from 'path'
 import { Compiler } from '@/compiler'
 import { isString } from 'lodash'
+import { removeFiles } from '../utils'
 
 describe('Compiler base test', () => {
   it('should init success', () => {
@@ -16,21 +17,19 @@ describe('Compiler base test', () => {
   })
 
   it('should compile success', async () => {
+    const input = resolve(__dirname, '../fixtures/base.cpp')
+    const output = resolve(__dirname, '../fixtures/base.test.out')
     const runner = new Compiler({
-      path: resolve(__dirname, '../fixtures/base.cpp'),
-      output: resolve(__dirname, '../fixtures/base.test.out')
+      path: input,
+      output
     })
     const path = await runner.compile()
     expect(isString(path)).toBe(true)
     expect(path).toEqual(resolve(__dirname, '../fixtures/base.test.out'))
-    // expect(existsSync(path)).toBe(true)
+    expect(fs.existsSync(resolve(__dirname, '../fixtures/base.test.out'))).toBe(true)
   })
 
   afterAll(() => {
-    const outputs = [
-      '../fixtures/base.test.out'
-    ]
-    outputs.forEach(output => output |> ((_) => resolve(__dirname, _)) |> fs.removeSync
-    )
+    removeFiles(resolve(__dirname, '../', 'fixtures'), 'base.test.out')
   })
 })

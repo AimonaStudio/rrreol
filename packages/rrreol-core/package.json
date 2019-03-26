@@ -27,7 +27,7 @@
     "@types/fs-extra": "^5.0.5",
     "@types/is-number": "^3.0.1",
     "@types/lodash": "^4.14.123",
-    "@types/node": "^11.11.0",
+    "@types/node": "^11.11.8",
     "@types/ramda": "^0.26.3",
     "babel-jest": "^24.5.0",
     "concurrently": "^4.1.0",

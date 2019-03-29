@@ -2,7 +2,7 @@ import fs from 'fs-extra'
 import { resolve, join } from 'path'
 import { Compiler } from '@/compiler'
 import { isString } from 'lodash'
-import { removeFiles } from '../utils'
+import { removeFiles } from '@/utils'
 
 describe('Compiler base test', () => {
   it('should init success', () => {

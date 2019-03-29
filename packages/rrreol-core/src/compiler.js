@@ -15,7 +15,7 @@ export class Compiler {
     }
   }
 
-  async compile (path) {
+  compile = (path) => {
     const output = path || this.__output
     const input = this.__path
     if (!output) throw new TypeError()

@@ -1,4 +1,6 @@
-import { isArray, isFunction, isString } from 'lodash'
+import chalk from 'chalk'
+import { isFunction } from 'lodash'
+import { equals, isNil } from 'ramda'
 
 export class JudgeWrapper {
   static of (val) {
@@ -7,18 +9,26 @@ export class JudgeWrapper {
   }
 
   constructor (val, target) {
-    this.__target = target
+    if (isNil(val)) {
+      throw TypeError('val is null')
+    }
+    this.__target = target || null
     this.__val = val
   }
 
-  toBe (val) {
+  toBe = (val) => {
     // todo: resolve `val`
-
+    let res = true
     if (isFunction(this.__val)) {
-      this.__val.apply(this.__target, [val])
-    } else if (isString(this.__val)) {
-      // todo
-    } else if (isArray(this.__val)) {
+      res = this.__val.apply(this.__target, [val])
+    } else {
+      res = equals(this.__val, val)
+    }
+    if (!res) {
+      // todo: other handle
+      // fixme: incorrect solution
+      console.log(`${chalk.red('Error')}`)
+    } else {
       // todo
     }
     return this.__target

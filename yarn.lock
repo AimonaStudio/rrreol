@@ -8152,6 +8152,11 @@ memoize-one@^5.0.0:
   resolved "http://registry.npm.taobao.org/memoize-one/download/memoize-one-5.0.0.tgz#d55007dffefb8de7546659a1722a5d42e128286e"
   integrity sha1-1VAH3/77jedUZlmhcipdQuEoKG4=
 
+memoize-one@^5.0.2:
+  version "5.0.2"
+  resolved "http://registry.npm.taobao.org/memoize-one/download/memoize-one-5.0.2.tgz#6aba5276856d72fb44ead3efab86432f94ba203d"
+  integrity sha1-arpSdoVtcvtE6tPvq4ZDL5S6ID0=
+
 memory-fs@^0.4.0, memory-fs@^0.4.1, memory-fs@~0.4.1:
   version "0.4.1"
   resolved "http://registry.npm.taobao.org/memory-fs/download/memory-fs-0.4.1.tgz#3a9a20b8462523e447cfbc7e8bb80ed667bfc552"

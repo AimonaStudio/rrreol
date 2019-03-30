@@ -27,7 +27,7 @@ export class JudgeWrapper {
     if (!res) {
       // todo: other handle
       // fixme: incorrect solution
-      console.log(`${chalk.red('Error')}`)
+      console.log(`${chalk.red('error')}`)
     } else {
       // todo
     }

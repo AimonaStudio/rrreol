@@ -8,6 +8,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/AimonaStudio/rrreol.svg?style=social)
 ![GitHub watchers](https://img.shields.io/github/watchers/AimonaStudio/rrreol.svg?style=social)
 
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/abb20485cab94e9fb94c70decab47c65)](https://app.codacy.com/app/AimonaStudio/rrreol?utm_source=github.com&utm_medium=referral&utm_content=AimonaStudio/rrreol&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.com/AimonaStudio/rrreol.svg?branch=master)](https://travis-ci.com/AimonaStudio/rrreol)
 [![codecov](https://codecov.io/gh/AimonaStudio/rrreol/branch/master/graph/badge.svg)](https://codecov.io/gh/AimonaStudio/rrreol)
@@ -18,9 +19,9 @@
 ## TODO
 
 - [ ] RRReol核心
-  
+
   - [ ] 测评部分
-  
+
   - [ ] 沙盒部分
 
 - [ ] RRReol命令行
@@ -50,9 +51,9 @@ cd ./packages/rrreol-xxx
 3. Pull Request之前
 
   - 检查Commit message是否合法
-  
+
   - 删除多余改动
 
 ## LICENSE
 
-Follow [GNU GPL-3.0](LICENSE) 
+Follow [GNU GPL-3.0](LICENSE)

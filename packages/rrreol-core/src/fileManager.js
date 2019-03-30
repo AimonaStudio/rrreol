@@ -2,6 +2,7 @@ import chalk from 'chalk'
 import fs from 'fs-extra'
 import memoizeOne from 'memoize-one'
 import { empty, join, isNil } from 'ramda'
+import { CLRFtoLF } from './utils'
 
 export class FileManager {
   constructor (path) {
@@ -46,7 +47,7 @@ export class FileManager {
       console.log(chalk.red('error'))
       return ''
     } else {
-      return this.__content[line - 1].replace(/\s+$/, '')
+      return CLRFtoLF(this.__content[line - 1])
     }
   }
 

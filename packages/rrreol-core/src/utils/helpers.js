@@ -9,3 +9,5 @@ export const getFileName = name => {
   const _ = /[\S]+(?=\..+)/.exec(name)
   return _ && basename(_[0])
 }
+
+export const CLRFtoLF = str => str.toString().replace(/\r\n/g, '\n')

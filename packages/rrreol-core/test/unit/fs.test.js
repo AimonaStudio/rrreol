@@ -1,6 +1,6 @@
 import { readdirSync, createFileSync, pathExistsSync, rmdirSync, removeSync } from 'fs-extra'
 import { resolve } from 'path'
-import { removeFiles } from '../utils'
+import { removeFiles } from '@/utils'
 
 describe('Test-Utils removeFiles test', () => {
   const filePath = resolve(__dirname, 'test')
@@ -16,8 +16,8 @@ describe('Test-Utils removeFiles test', () => {
     readdirSync(__dirname, { withFileTypes: true })
       .forEach(file =>
         file.isFile() &&
-      /^test$/.test(file.name) &&
-      expect(file.name).toEqual('test')
+        /^test$/.test(file.name) &&
+        expect(file.name).toEqual('test')
       )
   })
 

@@ -11,26 +11,26 @@ export class Judge extends EventEmitter {
   constructor (props) {
     super()
     const {
-      input = ['./'],
-      output = ['./'],
+      input = [],
+      output = [],
       file = isString(props) ? props : null
     } = props
-    if (!isNil) {
+    if (isNil(props)) {
       throw new TypeError(`props file is nil`)
     }
 
     this.__outputs = output.map((val) => {
-      return new FileManager(path.resolve(val))
+      return new FileManager(val)
     })
     this.__inputs = input.map((val) => {
-      return new FileManager(path.resolve(val))
+      return new FileManager(val)
     })
     this.__runner = new Runner(file)
     this.__targetFile = this.__outputs[0] // default target
     this.on('start', this.test)
   }
 
-  test (callback) {
+  test = (callback) => {
     const fn = () => {
       callback()
       this.emit('finished')
@@ -38,11 +38,11 @@ export class Judge extends EventEmitter {
     // todo
   }
 
-  async exec () {
+  exec = async () => {
     // todo
   }
 
-  output (val) {
+  output = (val) => {
     if (!isNumber(val)) {
       throw new TypeError()
     }
@@ -51,7 +51,7 @@ export class Judge extends EventEmitter {
 
   out = this.output
 
-  input (val) {
+  input = (val) => {
     if (!isNumber(val)) {
       throw new TypeError()
     }
@@ -60,28 +60,28 @@ export class Judge extends EventEmitter {
 
   in = this.input
 
-  line (val) {
+  line = (val) => {
     return JudgeWrapper.of.call(this, val)
   }
 
-  lines () {
-    const count = 1 // fixme: bind the real val
+  lines = () => {
+    const lines = this.__targetFile.lines()
     return JudgeWrapper.of.call(this, curry((val) => {
-      return val === count
+      return val === lines
     }))
   }
 
-  maxline () {
-    const count = 1 // fixme: bind the real val
+  maxline = () => {
+    const lines = this.__targetFile.lines()
     return JudgeWrapper.of.call(this, curry((val) => {
-      return val >= count
+      return val >= lines
     }))
   }
 
-  minline () {
-    const count = 2 // fixme: bind the real val
+  minline = () => {
+    const lines = this.__targetFile.lines()
     return JudgeWrapper.of.call(this, curry((val) => {
-      return val <= count
+      return val <= lines
     }))
   }
 }

@@ -2,7 +2,7 @@ import * as cp from 'child_process'
 import * as path from 'path'
 import fs from 'fs-extra'
 import { getFileName } from '@/utils/helpers'
-import { removeFiles } from '../utils'
+import { removeFiles } from '@/utils'
 
 describe('Environment test', () => {
   const root = path.resolve(__dirname, '../', 'fixtures')

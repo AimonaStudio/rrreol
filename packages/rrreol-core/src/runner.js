@@ -16,18 +16,18 @@ export class Runner extends EventEmitter {
     this.__filePath = path
   }
 
-  async exec (stdin = new FileManager()) {
+  exec = async (stdin = new FileManager()) => {
     // todo
     // run code from sandbox
   }
 
   run = this.exec
 
-  async execUNSAFE (stdin = new FileManager(), timeout = 1000) {
+  execUnsafe = async (stdin = new FileManager(), timeout = 1000) => {
     cp.execFile(this.__filePath, { timeout })
   }
 
-  runUNSAFE = this.execUNSAFE
+  runUnsafe = this.execUnsafe
 }
 
 export default Runner

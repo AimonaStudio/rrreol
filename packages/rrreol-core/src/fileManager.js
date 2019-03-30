@@ -1,5 +1,6 @@
 import chalk from 'chalk'
 import fs from 'fs-extra'
+import { isNil } from 'ramda'
 
 export class FileManager {
   constructor (path) {
@@ -11,8 +12,16 @@ export class FileManager {
     this.filePath = path || ''
   }
 
-  save = async () => {
-    await fs.writeFile(this.filePath)
+  static save = async (path, content) => {
+    await fs.writeFile(path, content)
+  }
+
+  save = async (path) => {
+    if (!isNil(path)) {
+      await FileManager.save(path, this.__content)
+    } else {
+      await fs.writeFile(this.filePath, this.__content)
+    }
   }
 
   read = async (path) => {

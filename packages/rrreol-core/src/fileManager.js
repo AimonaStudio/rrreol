@@ -42,12 +42,15 @@ export class FileManager {
   }
 
   line = (line) => {
-    if (line < 0 || line > this.__content.length) {
+    if (line < 0 || line > (this.__content?.length || Number.MIN_VALUE)) {
       console.log(chalk.red('error'))
+      return ''
+    } else {
+      return this.__content[line - 1].replace(/\s+$/, '')
     }
   }
 
-  lines = () => this.__content.length
+  lines = () => this.__content?.length || 0
 }
 
 export default FileManager

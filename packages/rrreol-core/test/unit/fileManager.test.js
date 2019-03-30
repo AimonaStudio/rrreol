@@ -51,6 +51,25 @@ describe('FileManager File System test', () => {
     expect(content).toEqual('1\n2\n')
   })
 
+  it('should throw line error', async () => {
+    expect(fileManager.lines()).toEqual(0)
+    expect(fileManager.line(1)).toEqual('')
+    expect(fileManager.line(-1)).toEqual('')
+    expect(fileManager.line(100)).toEqual('')
+  })
+
+  it('should get lines correctly', async () => {
+    await fileManager.read(inputFilePath)
+    expect(fileManager.lines()).toBe(3)
+  })
+
+  it('should get line correctly', async () => {
+    await fileManager.read(inputFilePath)
+    expect(fileManager.line(1)).toEqual('1')
+    expect(fileManager.line(2)).toEqual('2')
+    expect(fileManager.line(3)).toEqual('')
+  })
+
   afterAll(() => {
     removeFiles(fixturesPath, /\.test\.out$/)
   })

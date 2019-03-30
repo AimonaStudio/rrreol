@@ -2,7 +2,8 @@ import { resolve } from 'path'
 import { Runner } from '@/runner'
 import { Compiler } from '@/compiler'
 import { isString } from 'lodash'
-import { removeFiles } from '../../src/utils'
+import { FileManager } from '@/fileManager'
+import { removeFiles } from '@/utils'
 
 describe('Runner base test', () => {
   it('should init success', () => {
@@ -18,7 +19,7 @@ describe('Runner execUnsafe test', () => {
     runner = new Runner()
   })
 
-  it('should execUnsafe base test', async () => {
+  it('should execUnsafe run success with no input', async () => {
     const basePath = resolve(fixturesPath, 'base.cpp')
     const output = resolve(fixturesPath, 'base.test.out')
     Compiler.compile(basePath, output)
@@ -30,7 +31,21 @@ describe('Runner execUnsafe test', () => {
     })
   })
 
-  afterAll(() => {
+  it('should execUnsafe run success with input', async () => {
+    const basePath = resolve(fixturesPath, 'print-input.cpp')
+    const output = resolve(fixturesPath, 'base.test.out')
+    Compiler.compile(basePath, output)
+    runner.filePath = output
+
+    const fm = new FileManager(resolve(fixturesPath, 'print-input.in'))
+
+    await runner.execUnsafe(fm).then(res => {
+      expect(isString(res)).toBe(true)
+      expect(res).toEqual('1 2')
+    })
+  })
+
+  afterEach(() => {
     removeFiles(fixturesPath, /\.test\.out$/)
   })
 })

@@ -1,5 +1,6 @@
 import chalk from 'chalk'
 import fs from 'fs-extra'
+import memoizeOne from 'memoize-one'
 import { empty, join, isNil } from 'ramda'
 
 export class FileManager {
@@ -18,13 +19,13 @@ export class FileManager {
     await fs.writeFile(path, content)
   }
 
-  content = () => {
-    if (isNil(this.__content)) {
+  content = memoizeOne((content = this.__content) => {
+    if (isNil(content)) {
       return empty('')
     } else {
-      return join('\n')(this.__content)
+      return join('\n')(content)
     }
-  }
+  })
 
   save = async (path) => {
     if (!isNil(path)) {

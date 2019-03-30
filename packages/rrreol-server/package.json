@@ -18,7 +18,7 @@
     "@babel/preset-env": "^7.3.4",
     "@types/koa": "^2.0.48",
     "@types/koa-router": "^7.0.40",
-    "@types/node": "^11.12.1",
+    "@types/node": "^11.12.2",
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
     "koa-router": "^7.4.0",

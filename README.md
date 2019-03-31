@@ -18,17 +18,7 @@
 
 ## TODO
 
-- [ ] RRReol核心
-
-  - [ ] 测评部分
-
-  - [ ] 沙盒部分
-
-- [ ] RRReol命令行
-
-- [ ] RRReol服务端
-
-- [ ] RRReol交互端
+see on [Project](https://github.com/AimonaStudio/rrreol/projects/1)
 
 ## 贡献项目
 

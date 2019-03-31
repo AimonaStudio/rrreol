@@ -1,37 +1,29 @@
 import * as cp from 'child_process'
-import fs from 'fs-extra'
 import { isString } from 'lodash'
+import { empty, isNil, curry } from 'ramda'
 
-export class Compiler {
-  constructor (props) {
-    if (!props) throw new TypeError('props is nil')
-    if (isString(props)) {
-      this.__path = props
-    } else {
-      const { path, output } = props
-      if (!isString(path)) throw new TypeError('path is not string')
-      this.__path = path
-      this.__output = output
-    }
-  }
-
-  static compile (path, output) {
-    return new Compiler(path).compile(output)
-  }
-
-  compile = (path) => {
-    const output = path || this.__output
-    const input = this.__path
-    if (!output) throw new TypeError()
-    // fixme: add more command options
-    const process = cp.spawnSync('g++', ['-o', output, input])
-    if (process.error) {
-      throw process.error
-    } else if (String(process.stderr).trim() !== '') {
-      throw Error(process.stderr)
-    }
-    return output
-  }
+export function Compiler () {
+  throw Error('static class shouldn\'t invoke new')
 }
+
+Compiler.compile = curry(async (path, output) => {
+  if (!isString(path) || !isString(output)) {
+    return Promise.reject(new TypeError('path or output is not string'))
+  }
+  // fixme: add more command options
+  const childProcess = cp.spawn('g++', ['-o', output, path])
+  return new Promise((resolve, reject) => {
+    childProcess.on('exit', (code) => {
+      if (code !== 0) {
+        let stderr = childProcess.stderr.read()
+        if (isNil(stderr)) {
+          stderr = empty('')
+        }
+        reject(Error(stderr.toString()))
+      }
+      resolve(output)
+    })
+  })
+})
 
 export default Compiler

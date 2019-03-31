@@ -15,6 +15,10 @@ export class Compiler {
     }
   }
 
+  static compile (path, output) {
+    return new Compiler(path).compile(output)
+  }
+
   compile = (path) => {
     const output = path || this.__output
     const input = this.__path

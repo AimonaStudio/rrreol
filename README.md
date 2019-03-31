@@ -18,17 +18,17 @@
 
 ## TODO
 
-- [ ] RRReol核心
+-[ ] RRReol核心
 
-  - [ ] 测评部分
+  -[ ] 测评部分
 
-  - [ ] 沙盒部分
+  -[ ] 沙盒部分
 
-- [ ] RRReol命令行
+-[ ] RRReol命令行
 
-- [ ] RRReol服务端
+-[ ] RRReol服务端
 
-- [ ] RRReol交互端
+-[ ] RRReol交互端
 
 ## 贡献项目
 

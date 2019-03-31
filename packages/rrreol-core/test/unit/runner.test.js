@@ -22,7 +22,7 @@ describe('Runner execUnsafe test', () => {
   it('should execUnsafe run success with no input', async () => {
     const basePath = resolve(fixturesPath, 'base.cpp')
     const output = resolve(fixturesPath, 'base.test.out')
-    Compiler.compile(basePath, output)
+    await Compiler.compile(basePath, output)
     runner.filePath = output
 
     await runner.execUnsafe().then(res => {
@@ -34,7 +34,7 @@ describe('Runner execUnsafe test', () => {
   it('should execUnsafe run success with input', async () => {
     const basePath = resolve(fixturesPath, 'print-input.cpp')
     const output = resolve(fixturesPath, 'base.test.out')
-    Compiler.compile(basePath, output)
+    await Compiler.compile(basePath, output)
     runner.filePath = output
 
     const fm = new FileManager(resolve(fixturesPath, 'print-input.in'))

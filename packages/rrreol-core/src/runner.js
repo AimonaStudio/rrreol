@@ -30,7 +30,9 @@ export class Runner extends EventEmitter {
   // fixme: unused timeout
   execUnsafe = async (stdin = new FileManager(), timeout = 1000) => {
     const childProcess = cp.spawn(this.filePath)
-    childProcess.stdin.write(stdin.content())
+    childProcess.stdin.write(stdin.content)
+    // need a enter to continue
+    childProcess.stdin.write('\n')
     return new Promise((resolve, reject) => {
       childProcess.on('exit', () => {
         let res = childProcess.stdout.read()

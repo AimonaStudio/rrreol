@@ -1,3 +1,4 @@
+import Judge from '@/judge'
 import JudgeWrapper from '@/judgeWrapper'
 
 describe('JudgeWrapper base test', () => {
@@ -7,7 +8,7 @@ describe('JudgeWrapper base test', () => {
   })
 
   it('should expect success', () => {
-    const target = {}
+    const target = new Judge()
     const judgeWrapper = new JudgeWrapper(1, target)
     expect(judgeWrapper.toBe('1')).toBe(target)
     expect(judgeWrapper.toBe(1)).toBe(target)

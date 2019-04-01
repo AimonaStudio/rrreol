@@ -17,19 +17,12 @@ export class JudgeWrapper {
   }
 
   toBe = (val) => {
-    // todo: resolve `val`
-    let res = true
-    if (isFunction(this.__val)) {
-      res = this.__val.apply(this.__target, [val])
+    if ('on' in this.__target) {
+      this.__target.on('finished', (answer) => {
+
+      })
     } else {
-      res = equals(this.__val, val)
-    }
-    if (!res) {
-      // todo: other handle
-      // fixme: incorrect solution
-      console.log(`${chalk.red('error')}`)
-    } else {
-      // todo
+      throw new Error('no property \'on\'')
     }
     return this.__target
   }

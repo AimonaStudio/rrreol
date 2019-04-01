@@ -1,6 +1,6 @@
 import React from 'react'
-import HomePage from '@/Home'
 import renderer from 'react-test-renderer'
+import HomePage from '@/Home'
 
 describe('base test', () => {
   it('should init success', () => {

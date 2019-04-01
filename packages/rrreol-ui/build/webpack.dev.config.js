@@ -7,7 +7,7 @@ const { config: baseWebpackConfig, happyThreadPool } = require('./webpack.base.c
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = merge(baseWebpackConfig, {
-  entry: path.resolve(__dirname, '../', 'src', 'index.js'),
+  entry: path.resolve(__dirname, '../', 'dev', 'index.js'),
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, '../', 'dist')

@@ -42,7 +42,7 @@
     "@types/react-test-renderer": "^16.8.1",
     "@types/webpack": "^4.4.27",
     "autoprefixer": "^9.4.10",
-    "babel-jest": "^24.7.0",
+    "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",
     "babel-merge": "^2.0.1",
     "concurrently": "^4.1.0",

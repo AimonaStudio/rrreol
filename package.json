@@ -5,7 +5,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "repository": "https://github.com/Himself65/rrreol.git",
+  "repository": "https://github.com/AimonaStudio/rrreol.git",
   "license": "GPL-3.0",
   "author": "himself65 <himself6565@gmail.com>",
   "scripts": {

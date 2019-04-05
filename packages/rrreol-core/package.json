@@ -11,10 +11,13 @@
     "test:unix": "cross-env NODE_ENV=test jest",
     "test:win32": "cross-env NODE_ENV=test jest -i",
     "lint": "eslint --ext .js src",
-    "lint:fix": "eslint --fix --ext .js src"
+    "lint:fix": "eslint --fix --ext .js src",
+    "build:dev": "cross-env NODE_ENV=development rollup -c",
+    "build": "cross-env NODE_ENV=production rollup -c"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
+    "@babel/plugin-external-helpers": "^7.2.0",
     "@babel/plugin-proposal-class-properties": "^7.3.4",
     "@babel/plugin-proposal-export-default-from": "^7.2.0",
     "@babel/plugin-proposal-function-bind": "^7.2.0",
@@ -34,7 +37,10 @@
     "jest": "^24.7.1",
     "jest-serializer-html": "^6.0.0",
     "rollup": "^1.9.0",
-    "rollup-plugin-node-resolve": "^4.1.0"
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^4.1.0",
+    "rollup-plugin-terser": "^4.0.4"
   },
   "dependencies": {
     "chalk": "^2.4.2",

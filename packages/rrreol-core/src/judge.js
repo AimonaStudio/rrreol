@@ -1,23 +1,23 @@
-import * as path from 'path'
+import { existsSync } from 'fs'
+import chalk from 'chalk'
+import { dirname, resolve, basename } from 'path'
 import isNumber from 'is-number'
 import { isString, isNil } from 'lodash'
-import { curry } from 'ramda'
+import { curry, equals, propEq, findIndex } from 'ramda'
 import { EventEmitter } from 'events'
 import { FileManager } from './fileManager'
 import { JudgeWrapper } from './judgeWrapper'
 import { Runner } from './runner'
+import { Compiler } from './compiler'
 
 export class Judge extends EventEmitter {
-  constructor (props) {
+  constructor (props = {}) {
     super()
     const {
       input = [],
       output = [],
       file = isString(props) ? props : null
     } = props
-    if (isNil(props)) {
-      throw new TypeError(`props file is nil`)
-    }
 
     this.__outputs = output.map((val) => {
       return new FileManager(val)
@@ -25,65 +25,95 @@ export class Judge extends EventEmitter {
     this.__inputs = input.map((val) => {
       return new FileManager(val)
     })
-    this.__runner = new Runner(file)
-    this.__targetFile = this.__outputs[0] // default target
-    this.on('start', this.test)
+    this.__answer = []
+
+    this.__path = file || null
+    this.__target = 0
+
+    this.on('start', this.exec)
+    this.on('finished', () => {
+      // todo
+    })
   }
 
-  test = (callback) => {
-    const fn = () => {
-      callback()
-      this.emit('finished')
+  get answer () {
+    return curry((idx) => this.__answer[idx - 1])
+  }
+
+  get input () {
+    return curry((idx) => {
+      if (isNil(this.__inputs[idx - 1])) {
+        this.__inputs[idx - 1] = new FileManager()
+      }
+      return this.__inputs[idx - 1]
+    })
+  }
+
+  // alias
+  get in () {
+    return this.input
+  }
+
+  get output () {
+    return curry((idx) => {
+      if (isNil(this.__outputs[idx - 1])) {
+        this.__outputs[idx - 1] = new FileManager()
+      }
+      return this.__outputs[idx - 1]
+    })
+  }
+
+  // alias
+  get out () {
+    return this.output
+  }
+
+  get targetFile () {
+    if (isNil(this.__outputs[this.__target])) {
+      return new FileManager()
+    } else {
+      return this.__outputs[this.__target]
     }
-    // todo
+  }
+
+  run = () => this.emit('start')
+
+  file (val) {
+    if (isNil(this.__outputs[this.__target])) {
+      console.log(chalk.red('error') + 'target file is empty')
+    } else if (isString(val)) {
+      findIndex(propEq('name', val))(this.__outputs)
+    }
+    this.__target = val
+    return this
+  }
+
+  test = (filePath) => {
+    if (isNil(filePath)) {
+      throw new TypeError('filePath is nil')
+    } else if (!existsSync(filePath)) {
+      throw new TypeError(`${filePath} does not exists`)
+    }
+    this.__path = filePath
+    return this
   }
 
   exec = async () => {
-    // todo
-  }
-
-  output = (val) => {
-    if (!isNumber(val)) {
-      throw new TypeError()
+    const outputPath = resolve(dirname(this.__path), basename(this.__path) + '.test.out')
+    console.log(`${chalk.yellowBright('Compiling')} file`)
+    const path = await Compiler.compile(this.__path, outputPath)
+    console.log(`${chalk.yellowBright('Compiled')} file`)
+    const runner = new Runner(path)
+    for await (const input of this.__inputs) {
+      const res = await runner.execUnsafe(input)
+      const fm = FileManager.of().loadContent(res)
+      this.__answer.push(fm)
+      this.emit('finished', fm)
     }
     return this
   }
 
-  out = this.output
-
-  input = (val) => {
-    if (!isNumber(val)) {
-      throw new TypeError()
-    }
-    return this
-  }
-
-  in = this.input
-
-  line = (val) => {
-    return JudgeWrapper.of.call(this, val)
-  }
-
-  lines = () => {
-    const lines = this.__targetFile.lines()
-    return JudgeWrapper.of.call(this, curry((val) => {
-      return val === lines
-    }))
-  }
-
-  maxline = () => {
-    const lines = this.__targetFile.lines()
-    return JudgeWrapper.of.call(this, curry((val) => {
-      return val >= lines
-    }))
-  }
-
-  minline = () => {
-    const lines = this.__targetFile.lines()
-    return JudgeWrapper.of.call(this, curry((val) => {
-      return val <= lines
-    }))
-  }
+  run = () => this.emit('start')
 }
 
 export default Judge

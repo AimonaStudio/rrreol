@@ -7,7 +7,7 @@ import { removeFiles } from '@/utils'
 
 describe('Runner base test', () => {
   it('should init success', () => {
-    const runner = new Runner('1.cpp')
+    const runner = new Runner()
     expect(runner).toBeDefined()
   })
 })

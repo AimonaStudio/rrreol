@@ -16,7 +16,7 @@ install:
 jobs:
   include:
     - stage: pre-test
-      name: 'Lint First commit message'
+      name: 'Lint commit message'
       script:
         - if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
           commitlint-travis;
@@ -30,7 +30,8 @@ jobs:
         - lerna run test:coverage -- -i
       after_script:
         - codecov
-#    - stage: build
-#      name: 'Build'
-#      script:
-#        - yarn run build
+    - stage: deploy
+      script:
+        - if [ "${TRAVIS_PULL_REQUEST}" == "false" && "${TRAVIS_BRANCH}" == "master" ]; then
+          ./tools/deploy-docs.sh;
+          fi

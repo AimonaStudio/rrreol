@@ -9,9 +9,16 @@
   "license": "GPL-3.0",
   "author": "himself65 <himself6565@gmail.com>",
   "scripts": {
-    "lint": "lerna run lint --parallel",
+    "lint": "lerna run lint --parallel && remark ./docs",
     "test": "lerna run test",
-    "build": "lerna run build"
+    "build": "lerna run build",
+    "docs:dev": "cross-env vuepress dev docs",
+    "docs:build": "cross-env vuepress build docs"
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-lint-recommended"
+    ]
   },
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
@@ -26,6 +33,10 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-standard": "^4.0.0",
-    "lerna": "^3.13.1"
+    "lerna": "^3.13.1",
+    "remark-cli": "^6.0.1",
+    "remark-lint": "^6.0.4",
+    "remark-preset-lint-recommended": "^3.0.2",
+    "vuepress": "^0.14.10"
   }
 }

@@ -30,6 +30,10 @@ jobs:
         - lerna run test:coverage -- -i
       after_script:
         - codecov
+    - stage: build
+      name: "Build"
+      script:
+        - yarn run build
     - stage: deploy
       script:
         - if [ "${TRAVIS_PULL_REQUEST}" == "false" && "${TRAVIS_BRANCH}" == "master" ]; then

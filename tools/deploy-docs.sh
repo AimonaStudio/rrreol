@@ -10,6 +10,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f https://${access_token}@github.com/<USERNAME>/<REPO>.git master:gh-pages
+git push -f https://${access_token}@github.com/AimonaStudio/rrreol.git master:gh-pages
 
 cd ../..

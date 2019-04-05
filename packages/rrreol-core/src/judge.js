@@ -9,6 +9,7 @@ import { FileManager } from './fileManager'
 import { JudgeWrapper } from './judgeWrapper'
 import { Runner } from './runner'
 import { Compiler } from './compiler'
+import { renameSuffix } from './utils';
 
 export class Judge extends EventEmitter {
   constructor (props = {}) {
@@ -99,7 +100,7 @@ export class Judge extends EventEmitter {
   }
 
   exec = async () => {
-    const outputPath = resolve(dirname(this.__path), basename(this.__path) + '.test.out')
+    const outputPath = renameSuffix(this.__path, '.test.out')
     console.log(`${chalk.yellowBright('Compiling')} file`)
     const path = await Compiler.compile(this.__path, outputPath)
     console.log(`${chalk.yellowBright('Compiled')} file`)

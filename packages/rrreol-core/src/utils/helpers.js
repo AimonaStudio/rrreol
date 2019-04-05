@@ -1,4 +1,4 @@
-import { basename } from 'path'
+import { basename, extname } from 'path'
 
 export const compilerConfig = {
   'c': ['gcc', '-pipe'],
@@ -11,3 +11,5 @@ export const getFileName = name => {
 }
 
 export const CLRFtoLF = str => str.toString().replace(/\r\n/g, '\n')
+
+export const renameSuffix = (str, suffix) => str.replace(extname(str), '.' + suffix.toString())

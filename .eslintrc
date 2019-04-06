@@ -6,7 +6,10 @@
   },
   "extends": "standard",
   "rules": {
-    "semi": "off",
+    "semi": [
+      "error",
+      "never"
+    ],
     "no-unused-vars": "off"
   }
 }

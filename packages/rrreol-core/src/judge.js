@@ -9,7 +9,7 @@ import { FileManager } from './fileManager'
 import { JudgeWrapper } from './judgeWrapper'
 import { Runner } from './runner'
 import { Compiler } from './compiler'
-import { renameSuffix } from './utils';
+import { renameSuffix } from './utils'
 
 export class Judge extends EventEmitter {
   constructor (props = {}) {

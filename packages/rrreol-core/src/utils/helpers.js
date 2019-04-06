@@ -1,9 +1,11 @@
 import { basename, extname } from 'path'
 
-export const compilerConfig = {
-  'c': ['gcc', '-pipe'],
-  'c++': ['g++', '-pipe']
+export const compileCommandRule = {
+  '.cpp': 'g++',
+  '.c': 'gcc'
 }
+
+export const parseFileSuffix = (file) => compileCommandRule[extname(file)] || null
 
 export const getFileName = name => {
   const _ = /[\S]+(?=\..+)/.exec(name)

@@ -1,5 +1,6 @@
 import { spawn } from 'child_process'
 import { isString } from 'lodash'
+import { parseFileSuffix } from './utils'
 import { empty, isNil, curry } from 'ramda'
 
 export function Compiler () {
@@ -11,7 +12,7 @@ Compiler.compile = curry(async (path, output) => {
     return Promise.reject(new TypeError('path or output is not string'))
   }
   // fixme: add more command options
-  const childProcess = spawn('g++', ['-o', output, path])
+  const childProcess = spawn(parseFileSuffix(path), ['-o', output, path])
   return new Promise((resolve, reject) => {
     childProcess.on('exit', (code) => {
       if (code !== 0) {

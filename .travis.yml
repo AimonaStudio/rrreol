@@ -35,7 +35,14 @@ jobs:
       script:
         - yarn run build
     - stage: deploy
-      script:
-        - if [ "${TRAVIS_PULL_REQUEST}" == "false" && "${TRAVIS_BRANCH}" == "master" ]; then
-          ./tools/deploy-docs.sh;
-          fi
+      name: "Deploy"
+      before_deploy:
+        - yarn docs:build
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $ACCESS_TOKEN
+        keep_history: false
+        local_dir: ./docs/.vuepress/dist
+        on:
+          branch: master

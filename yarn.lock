@@ -9627,10 +9627,10 @@ mem@^4.0.0:
     mimic-fn "^1.0.0"
     p-is-promise "^2.0.0"
 
-memoize-one@^5.0.2:
-  version "5.0.2"
-  resolved "http://registry.npm.taobao.org/memoize-one/download/memoize-one-5.0.2.tgz#6aba5276856d72fb44ead3efab86432f94ba203d"
-  integrity sha1-arpSdoVtcvtE6tPvq4ZDL5S6ID0=
+memoize-one@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-5.0.3.tgz#2f2ec6f21df48f41caa9f5e873b3dd09650d1d38"
+  integrity sha512-hSFNx1nYJZ1fUmhBa1ZNI5ZEKsWGks6yp3yX0v2hHOF7D2VJw+fRkzkoA4djB5itv+Nk0piLOelgiPPKIVBBqQ==
 
 memory-fs@^0.4.0, memory-fs@^0.4.1, memory-fs@~0.4.1:
   version "0.4.1"

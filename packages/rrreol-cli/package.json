@@ -18,7 +18,7 @@
     "@babel/preset-env": "^7.4.3",
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
-    "rollup": "^1.10.0",
+    "rollup": "^1.10.1",
     "rollup-plugin-node-resolve": "^4.2.3"
   }
 }

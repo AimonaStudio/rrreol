@@ -10,6 +10,10 @@ describe('Judge base test', () => {
     judge = new Judge()
   })
 
+  it('should have correct props', () => {
+    expect(judge.__config.ignoreEndEnter).toBe(true)
+  })
+
   it('should throw error when invoke get method', () => {
     expect(() => {
       judge.targetFile = 1
@@ -64,7 +68,38 @@ describe('Judge check test', () => {
     expect(judge.answer(1).content).toEqual('1 2')
   })
 
+  it('should emit check running success', () => {
+    const fm1 = FileManager.of().loadContent('1\n2\n')
+    const fm2 = FileManager.of().loadContent('1\n2\n')
+    judge.rawListeners('check')
+      .map(f => f(fm1, fm2))
+      .every(v => expect(v).toBeTruthy())
+  })
+
   afterAll(() => {
     removeFiles(fixturesPath, /\.test\.out$/)
+  })
+})
+
+describe('Judge check park', () => {
+  let judge = null
+  beforeEach(() => {
+    judge = new Judge()
+  })
+
+  it('should compare success', () => {
+    const success = judge.compareFileManager(
+      FileManager.of().loadContent('1'),
+      FileManager.of().loadContent('1')
+    )
+    expect(success).toBe(true)
+  })
+
+  it('should compare fail', () => {
+    const fail = judge.compareFileManager(
+      FileManager.of().loadContent('1'),
+      FileManager.of().loadContent('2')
+    )
+    expect(fail).toBe(false)
   })
 })

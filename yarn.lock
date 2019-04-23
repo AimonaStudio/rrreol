@@ -2858,10 +2858,10 @@
   resolved "http://registry.npm.taobao.org/@types/prop-types/download/@types/prop-types-15.7.0.tgz#4c48fed958d6dcf9487195a0ef6456d5f6e0163a"
   integrity sha1-TEj+2VjW3PlIcZWg72RW1fbgFjo=
 
-"@types/ramda@^0.26.7":
-  version "0.26.7"
-  resolved "http://registry.npm.taobao.org/@types/ramda/download/@types/ramda-0.26.7.tgz#d9dab6d503154e45cdc17e2b358702937b64a35c"
-  integrity sha1-2dq21QMVTkXNwX4rNYcCk3tko1w=
+"@types/ramda@^0.26.8":
+  version "0.26.8"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.26.8.tgz#e002612cca52e52f9176d577f4d6229c8c72a10a"
+  integrity sha512-PSMkNNhB900U2xcyndlkVjJeCXpVtf1yod0Kdq/ArsLDIE0tW8pLBChmQeJs4o4dfp3AEP+AGm6zIseZPU4ndA==
 
 "@types/range-parser@*":
   version "1.2.3"

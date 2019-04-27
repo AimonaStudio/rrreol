@@ -1,5 +1,5 @@
 {
-  "name": "rrreol-core",
+  "name": "@rrreol/core",
   "version": "0.1.0",
   "main": "dist/index.js",
   "source": "src/index.js",

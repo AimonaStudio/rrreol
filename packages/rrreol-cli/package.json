@@ -1,5 +1,5 @@
 {
-  "name": "rrreol-cli",
+  "name": "@rrreol/cli",
   "version": "0.1.0",
   "main": "./index.js",
   "license": "GPL-3.0",

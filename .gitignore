@@ -9,3 +9,4 @@ coverage
 # IDE config
 .idea
 .vscode
+.vs

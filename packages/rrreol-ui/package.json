@@ -38,7 +38,7 @@
     "@babel/preset-react": "^7.0.0",
     "@hot-loader/react-dom": "^16.8.6",
     "@types/react-test-renderer": "^16.8.1",
-    "@types/webpack": "^4.4.27",
+    "@types/webpack": "^4.4.29",
     "autoprefixer": "^9.5.1",
     "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",

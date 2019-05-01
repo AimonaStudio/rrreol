@@ -30,6 +30,8 @@ const command = new program.Command(packageJson.name)
   })
   .parse(process.argv)
 
+programName = path.resolve(programName)
+
 debug(chalk.blueBright('programName: ') + programName)
 Array.of(
   'file',
@@ -43,8 +45,8 @@ Array.of(
 })
 
 let config = {
-  input: '*.in',
-  output: '*.out'
+  input: '.+\\.in',
+  output: '.+\\.out'
 }
 
 if (command.input == null) {
@@ -105,7 +107,7 @@ function run (root) {
   [
     inputs = [...inputs],
     outputs = [...outputs]
-  ] = loadFiles(root)
+  ] = loadFiles(root, config)
 
   if (inputs.length < 1) {
     console.log(chalk.yellowBright('cannot find any file ') +
@@ -118,15 +120,18 @@ function run (root) {
                   config.output.toString())
   }
 
+  debug(chalk.blueBright('inputs: ') + inputs)
+  debug(chalk.blueBright('outputs: ') + outputs)
+
   // todo: need @rrreol/core to finish further
 }
 
 // only return file paths
 function loadFiles (root, config) {
   if (!fs.existsSync(root)) {
-    throw new TypeError()
-  } else if (fs.statSync(root).isDirectory()) {
-    throw new RangeError()
+    throw new TypeError(root)
+  } else if (!fs.statSync(root).isDirectory()) {
+    throw new RangeError(root)
   }
   const inputRegex = new RegExp(config.input)
   const outputRegex = new RegExp(config.output)
@@ -138,7 +143,7 @@ function loadFiles (root, config) {
       }
       return path.resolve(root, file)
     }
-  })
+  }).filter(file => file)
   const outputFiles = fs.readdirSync(root).map(file => {
     const stat = fs.statSync(file)
     if (stat.isFile()) {
@@ -147,6 +152,6 @@ function loadFiles (root, config) {
       }
       return path.resolve(root, file)
     }
-  })
+  }).filter(file => file)
   return [inputFiles, outputFiles]
 }

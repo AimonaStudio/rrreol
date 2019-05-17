@@ -1,5 +1,6 @@
 import { resolve } from 'path'
-import { getFileName, renameSuffix } from '@/utils/helpers'
+import { getFileName, renameSuffix, transformString } from '@/utils/helpers'
+import { platform } from 'os'
 
 describe('Util - getFileName unit test', () => {
   it('should return null', () => {
@@ -35,5 +36,26 @@ describe('Util - renameSuffix unit test', () => {
     expect(renameSuffix('1.2', '3')).toEqual('1.3')
     expect(renameSuffix('1.2.3', '4')).toEqual('1.2.4')
     expect(renameSuffix(resolve(__dirname, '1.2'), '3')).toEqual(resolve(__dirname, '1.3'))
+  })
+})
+
+describe('Util - transformString unit test', () => {
+  it('should run success', () => {
+    let res = '123\n'
+    switch (platform) {
+      case 'linux':
+        // Linux
+        res = '123\n'
+        break
+      case 'win32':
+        // Windows
+        res = '123\r\n'
+        break
+      case 'darwin':
+        // MacOS
+        res = '123\r'
+        break
+    }
+    expect(transformString('123\n')).toEqual(res)
   })
 })

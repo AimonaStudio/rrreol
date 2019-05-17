@@ -6,10 +6,8 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js --hot",
-    "test": "node ../../tools/scripts/run-tests.js",
+    "test": "jest",
     "test:coverage": "yarn test --coverage",
-    "test:unix": "cross-env NODE_ENV=test jest",
-    "test:win32": "cross-env NODE_ENV=test jest -i",
     "lint": "eslint --ext .js src",
     "lint:fix": "eslint --fix --ext .js src"
   },

@@ -3,14 +3,11 @@ steps:
     inputs:
       versionSpec: $(node_version)
 
-  - script: npm install -g codecov && npm install
+  - script: yarn install
     displayName: 'Install Dependency'
 
-  - script: npm run lint
+  - script: yarn run lint
     displayName: 'Lint Code'
 
-  - script: npm test
+  - script: yarn test
     displayName: 'Run Tests'
-
-  - script: npm run cov
-    displayName: 'Coverage Report'

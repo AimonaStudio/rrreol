@@ -7,18 +7,18 @@ jobs:
   - job: macOS_CI_Tests
     displayName: MacOS CI Tests
     pool:
-      vmImage: macOS-10.13
+      vmImage: xcode9-macos10.13
     strategy:
       matrix:
         node_10_x:
           node_version: 10.x
-
     steps:
+      - template: ./macos.yml
       - template: ./rrreol.yml
 
 
   - job: ubuntu_CI_Tests
-    displayName: Ubuntu  CI Tests
+    displayName: Ubuntu CI Tests
     pool:
       vmImage: ubuntu-16.04
     strategy:
@@ -27,6 +27,7 @@ jobs:
           node_version: 10.x
 
     steps:
+      - template: ./linux.yml
       - template: ./rrreol.yml
 
   - job: windows_CI_Tests
@@ -39,4 +40,5 @@ jobs:
           node_version: 10.x
 
     steps:
+      - template: ./windows.yml
       - template: ./rrreol.yml

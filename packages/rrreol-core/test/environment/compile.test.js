@@ -1,29 +1,29 @@
-import * as cp from 'child_process'
-import * as path from 'path'
-import fs from 'fs-extra'
-import { getFileName } from '@/utils/helpers'
 import { removeFiles } from '@/utils'
+import { getFileName } from '@/utils/helpers'
+import * as cp from 'child_process'
+import { existsSync } from 'fs'
+import { join, resolve } from 'path'
 
 describe('Environment test', () => {
-  const root = path.resolve(__dirname, '../', 'fixtures')
+  const root = resolve(__dirname, '../', 'fixtures')
 
   const input = ['base.cpp', 'cin.cpp']
 
   beforeAll(() => {
-    input.forEach(v => {
-      const name = getFileName(v)
+    input.forEach(fileRealName => {
+      const name = getFileName(fileRealName)
       cp.spawnSync('g++', [
+        join(root, fileRealName),
         '-o',
-        path.join(root, `${name}.test.out`),
-        path.join(root, v)
+        join(root, `${name}.test.out`)
       ])
     })
   })
 
   it('should compile success', () => {
-    input.forEach(v => {
-      const name = getFileName(v)
-      expect(fs.existsSync(path.join(root, `${name}.test.out`))).toBe(true)
+    input.forEach(fileRealName => {
+      const name = getFileName(fileRealName)
+      expect(existsSync(join(root, `${name}.test.out`))).toBe(true)
     })
   })
 

@@ -1,23 +1,13 @@
 import * as cp from 'child_process'
 import { EventEmitter } from 'events'
-import { empty, isNil } from 'ramda'
-import { CLRFtoLF } from './utils'
+import { CLRFtoLF, renderString } from './utils'
 import FileManager from './fileManager'
 
 // todo
 export class Runner extends EventEmitter {
   constructor (path) {
     super()
-    this.__filePath = path || ''
-  }
-
-  // todo: abstract this
-  get filePath () {
-    return this.__filePath
-  }
-
-  set filePath (val) {
-    this.__filePath = val
+    this.filePath = path || ''
   }
 
   exec = async (stdin = new FileManager()) => {
@@ -36,10 +26,10 @@ export class Runner extends EventEmitter {
     return new Promise((resolve, reject) => {
       childProcess.on('exit', () => {
         let res = childProcess.stdout.read()
-        if (isNil(res)) {
-          res = empty('')
+        if (res == null) {
+          res = ''
         }
-        resolve(CLRFtoLF(res.toString()))
+        resolve(renderString(CLRFtoLF(res.toString())))
       })
 
       childProcess.on('error', reject)

@@ -1,5 +1,5 @@
 import { resolve } from 'path'
-import { getFileName, renameSuffix, transformString } from '@/utils/helpers'
+import { getFileName, renameSuffix, renderString } from '@/utils'
 import { platform } from 'os'
 
 describe('Util - getFileName unit test', () => {
@@ -39,23 +39,23 @@ describe('Util - renameSuffix unit test', () => {
   })
 })
 
-describe('Util - transformString unit test', () => {
+describe('Util - renderString unit test', () => {
   it('should run success', () => {
-    let res = '123\n'
+    let from = '123\n'
     switch (platform) {
       case 'linux':
         // Linux
-        res = '123\n'
+        from = '123\n'
         break
       case 'win32':
         // Windows
-        res = '123\r\n'
+        from = '123\r\n'
         break
       case 'darwin':
         // MacOS
-        res = '123\r'
+        from = '123\r'
         break
     }
-    expect(transformString('123\n')).toEqual(res)
+    expect(renderString(from)).toEqual('123\n')
   })
 })

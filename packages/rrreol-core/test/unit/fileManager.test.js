@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 import { existsSync, readFileSync } from 'fs'
 import { FileManager } from '@/fileManager'
-import { removeFiles } from '@/utils'
+import { removeFiles, renderString } from '@/utils'
 
 describe('FileManager base test', () => {
   it('should init success', () => {
@@ -58,7 +58,7 @@ describe('FileManager File System test', () => {
     await fileManager.save(outFilePath)
     expect(existsSync(outFilePath)).toBe(true)
     const content = readFileSync(outFilePath).toString()
-    expect(content).toEqual('1\n2\n')
+    expect(renderString(content)).toEqual('1\n2\n')
   })
 
   it('should get 0 when call lines', () => {

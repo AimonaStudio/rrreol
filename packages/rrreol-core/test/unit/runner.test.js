@@ -21,8 +21,8 @@ describe('Runner execUnsafe test', () => {
 
   it('should execUnsafe run success with no input', async () => {
     const basePath = resolve(fixturesPath, 'base.cpp')
-    const output = resolve(fixturesPath, 'base.test.out')
-    await Compiler.compile(basePath, output)
+    let output = resolve(fixturesPath, 'base.test.out')
+    output = await Compiler.compile(basePath, output)
     runner.filePath = output
 
     await runner.execUnsafe().then(res => {

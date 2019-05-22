@@ -1,7 +1,7 @@
 import { spawn } from 'child_process'
 import { isString } from 'lodash'
-import { parseFileSuffix } from './utils'
-import { empty, isNil, curry } from 'ramda'
+// import { parseFileSuffix } from './utils'
+import { curry } from 'ramda'
 
 export function Compiler () {
   throw Error('static class shouldn\'t invoke new')
@@ -11,14 +11,14 @@ Compiler.compile = curry(async (path, output) => {
   if (!isString(path) || !isString(output)) {
     return Promise.reject(new TypeError('path or output is not string'))
   }
-  // fixme: add more command options
-  const childProcess = spawn(parseFileSuffix(path), ['-o', output, path])
+  // todo: add more command options
+  const childProcess = spawn('g++', ['-o', output, path])
   return new Promise((resolve, reject) => {
     childProcess.on('exit', (code) => {
       if (code !== 0) {
         let stderr = childProcess.stderr.read()
-        if (isNil(stderr)) {
-          stderr = empty('')
+        if (stderr == null) {
+          stderr = ''
         }
         reject(Error(stderr.toString()))
       }

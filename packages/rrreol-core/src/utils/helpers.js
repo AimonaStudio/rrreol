@@ -12,31 +12,30 @@ export const compileCommandRule = {
 export const parseFileSuffix = (file) => compileCommandRule[extname(file)] || null
 
 export const getFileName = name => {
-  const _ = /[\S]+(?=\..+)/.exec(name)
-  return _ && basename(_[0])
+  const res = /[\S]+(?=\..+)/.exec(name)
+  return res && basename(res[0])
 }
 
 export const CLRFtoLF = str => str.toString().replace(/\r\n/g, '\n')
 
-export const transformString = (str, from = /\n/, to = undefined) => {
+export const renderString = str => {
   assert(typeof str === 'string', TypeError('str must be string'))
-  if (to == null) {
-    switch (platform) {
-      case 'linux':
-        // Linux
-        to = '\n'
-        break
-      case 'win32':
-        // Windows
-        to = '\r\n'
-        break
-      case 'darwin':
-        // MacOS
-        to = '\r'
-        break
-    }
+  let from = ''
+  switch (platform) {
+    case 'linux':
+      // Linux
+      from = /\n/
+      break
+    case 'win32':
+      // Windows
+      from = /\r\n/
+      break
+    case 'darwin':
+      // MacOS
+      from = /\r/
+      break
   }
-  return from[Symbol.replace](str, to)
+  return from[Symbol.replace](str, '\n')
 }
 
 export const renameSuffix = (str, suffix) => str.replace(extname(str), '.' + suffix.toString())

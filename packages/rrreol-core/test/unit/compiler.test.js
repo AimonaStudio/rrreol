@@ -17,7 +17,7 @@ describe('Compiler base test', () => {
     const input = resolve(__filename, 'error.cpp')
     const output = resolve(__filename, 'error.test.out')
     const path = await Compiler.compile(input, output).catch(err => {
-      expect(/g\+\+: error/.test(err)).toBe(true)
+      expect(/error/.test(err)).toBe(true)
     })
     expect(existsSync(path)).toBe(false)
   })

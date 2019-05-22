@@ -6,7 +6,7 @@
   "license": "GPL-3.0",
   "private": false,
   "scripts": {
-    "test": "jest",
+    "test": "cross-env NODE_ENV=test jest -i",
     "test:coverage": "yarn test --coverage",
     "lint": "eslint --ext .js src",
     "lint:fix": "eslint --fix --ext .js src",

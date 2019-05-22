@@ -1,9 +1,8 @@
 import { EventEmitter } from 'events'
-import chalk from 'chalk'
 import fs from 'fs-extra'
 import { isString } from 'lodash'
-import { isNil, join } from 'ramda'
-import { CLRFtoLF } from './utils'
+import { join } from 'ramda'
+import { CLRFtoLF, prettyLog } from './utils'
 
 export class FileManager extends EventEmitter {
   constructor (path) {
@@ -12,7 +11,7 @@ export class FileManager extends EventEmitter {
     this.filePath = path || null
 
     this.on('loaded', (val) => {
-      if (isNil(val)) throw new TypeError()
+      if (val == null) throw new TypeError()
       if (Array.isArray(val)) {
         this.__content = val
       } else if (val instanceof Buffer) {
@@ -20,14 +19,14 @@ export class FileManager extends EventEmitter {
       }
     })
 
-    if (!isNil(path) && fs.existsSync(path)) {
+    if (path != null && fs.existsSync(path)) {
       this.emit('loaded', fs.readFileSync(path))
     }
   }
 
   static of = (val) => {
     const copy = new FileManager()
-    if (isNil(val)) return copy
+    if (val == null) return copy
     if (val instanceof FileManager) {
       copy.__content = val.__content
       copy.filePath = val.filePath
@@ -52,7 +51,7 @@ export class FileManager extends EventEmitter {
   }
 
   save = async (path) => {
-    if (!isNil(path)) {
+    if (path != null) {
       await FileManager.save(path, this.content)
     } else {
       await fs.writeFile(this.filePath, this.content)
@@ -67,7 +66,7 @@ export class FileManager extends EventEmitter {
 
   line = (line) => {
     if (line < 0 || line > (this.__content?.length || Number.MIN_VALUE)) {
-      console.log(chalk.red('error'))
+      prettyLog({ prefix: 'error', level: 'error' })
       throw TypeError(`target line ${line} is empty`)
     } else {
       return CLRFtoLF(this.__content[line - 1])

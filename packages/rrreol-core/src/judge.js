@@ -1,12 +1,11 @@
 import { existsSync } from 'fs'
-import chalk from 'chalk'
-import { isString, isNil } from 'lodash'
-import { curry, equals, propEq, findIndex } from 'ramda'
+import { isNil, isString } from 'lodash'
+import { curry, equals, findIndex, propEq } from 'ramda'
 import { EventEmitter } from 'events'
 import { FileManager } from './fileManager'
 import { Runner } from './runner'
 import { Compiler } from './compiler'
-import { renameSuffix } from './utils'
+import { prettyLog, renameSuffix } from './utils'
 
 export class Judge extends EventEmitter {
   constructor (props = {}) {
@@ -39,7 +38,7 @@ export class Judge extends EventEmitter {
     this.on('start', this.exec)
     this.on('finish_compile', () => {
       // todo
-      console.log(chalk.greenBright('finished'))
+      prettyLog({ prefix: 'finished', level: 'success' })
     })
   }
 
@@ -87,7 +86,7 @@ export class Judge extends EventEmitter {
 
   file (val) {
     if (isNil(this.__outputs[this.__target])) {
-      console.log(chalk.red('error') + 'target file is empty')
+      prettyLog('target file is empty', { prefix: 'error', level: 'error' })
     } else if (isString(val)) {
       // todo
       findIndex(propEq('name', val))(this.__outputs)
@@ -108,9 +107,9 @@ export class Judge extends EventEmitter {
 
   exec = async () => {
     const outputPath = renameSuffix(this.__path, '.test.out')
-    console.log(`${chalk.yellowBright('Compiling')} file`)
+    prettyLog('file', { prefix: 'Compiling', level: 'notice' })
     const path = await Compiler.compile(this.__path, outputPath)
-    console.log(`${chalk.yellowBright('Compiled')} file`)
+    prettyLog('file', { prefix: 'Compiled', level: 'notice' })
     const runner = new Runner(path)
 
     let index = 0
@@ -121,7 +120,7 @@ export class Judge extends EventEmitter {
       // check output
       const success = this.compareFileManager(fileManager, this.out(index + 1))
       if (!success) {
-        console.log(`${chalk.red('error on file')} ${index + 1}`)
+        prettyLog(`${index + 1}`, { prefix: 'error on file', level: 'error' })
       }
 
       ++index
@@ -136,25 +135,24 @@ export class Judge extends EventEmitter {
     }
     let success = true
     Object.keys(Array(realFM.lines()).fill(null)).forEach((_, line) => {
-      console.log(`judging line ${line + 1}`)
+      prettyLog(`judging line ${line + 1}`)
       const realLine = realFM.line(++line)
       const expectedLine = expectedFM.line(line)
       const same = equals(realLine, expectedLine)
       if (!same) {
         success = false
         // todo: support log column
-        console.log(`${chalk.red('wrong answer:')} On line ${line}, read ${realLine} expected ${expectedLine}`)
+        prettyLog(`On line ${line}, read ${realLine} expected ${expectedLine}`,
+          { prefix: 'wrong answer', level: 'error' })
       }
     })
     if (success) {
-      console.log(`${chalk.greenBright('success')} compare`)
+      prettyLog('compare', { prefix: 'success', level: 'success' })
     } else {
-      console.log(`${chalk.yellowBright('finished')} compare`)
+      prettyLog('compare', { prefix: 'finished', level: 'warning' })
     }
     return success
   }
-
-  run = () => this.emit('start')
 }
 
 export default Judge

@@ -1,0 +1,4 @@
+.azure-pipelines/
+.vs/
+.vscode/
+docs/

@@ -46,5 +46,8 @@
     "lodash": "^4.17.11",
     "memoize-one": "^5.0.4",
     "ramda": "^0.26.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

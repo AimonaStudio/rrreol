@@ -27,5 +27,8 @@
   },
   "bin": {
     "rrreol": "./index.js"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

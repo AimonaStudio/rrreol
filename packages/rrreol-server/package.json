@@ -26,5 +26,8 @@
   "dependencies": {
     "koa": "^2.7.0",
     "koa-body": "^4.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

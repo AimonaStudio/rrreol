@@ -44,7 +44,7 @@
     "concurrently": "^4.1.0",
     "css-loader": "^2.1.1",
     "css-mqpacker": "^7.0.0",
-    "dotenv": "^7.0.0",
+    "dotenv": "^8.0.0",
     "eslint-loader": "^2.1.2",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "happypack": "^5.0.1",

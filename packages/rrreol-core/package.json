@@ -27,7 +27,7 @@
     "@babel/preset-env": "^7.4.4",
     "@types/fs-extra": "^5.0.5",
     "@types/is-number": "^3.0.1",
-    "@types/lodash": "^4.14.123",
+    "@types/lodash": "^4.14.133",
     "@types/ramda": "^0.26.8",
     "babel-jest": "^24.7.1",
     "concurrently": "^4.1.0",

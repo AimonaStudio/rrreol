@@ -21,7 +21,7 @@
     "concurrently": "^4.1.0",
     "koa-router": "^7.4.0",
     "rollup": "^1.13.1",
-    "rollup-plugin-node-resolve": "^4.2.3"
+    "rollup-plugin-node-resolve": "^5.0.1"
   },
   "dependencies": {
     "daruk": "^0.5.9",

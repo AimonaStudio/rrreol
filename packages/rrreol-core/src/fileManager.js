@@ -2,7 +2,7 @@ import { EventEmitter } from 'events'
 import fs from 'fs-extra'
 import { isString } from 'lodash'
 import { join } from 'ramda'
-import { CLRFtoLF, prettyLog } from './utils'
+import { prettyLog, renderString } from './utils'
 
 export class FileManager extends EventEmitter {
   constructor (path) {
@@ -69,7 +69,7 @@ export class FileManager extends EventEmitter {
       prettyLog({ prefix: 'error', level: 'error' })
       throw TypeError(`target line ${line} is empty`)
     } else {
-      return CLRFtoLF(this.__content[line - 1])
+      return renderString(this.__content[line - 1])
     }
   }
 

@@ -1,6 +1,6 @@
 {
   "name": "@rrreol/cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "./index.js",
   "license": "GPL-3.0",
   "private": false,
@@ -21,7 +21,7 @@
     "rollup-plugin-node-resolve": "^5.0.1"
   },
   "dependencies": {
-    "@rrreol/core": "^0.1.0",
+    "@rrreol/core": "^0.1.1",
     "chalk": "^2.4.2",
     "commander": "^2.20.0",
     "debug": "^4.1.1"

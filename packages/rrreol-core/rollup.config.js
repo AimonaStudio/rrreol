@@ -15,10 +15,8 @@ export default {
   plugins: [
     babel({
       exclude: 'node_modules/**',
-      plugins: [
-        '@babel/external-helpers'
-      ],
-      externalHelpers: true
+      externalHelpers: false,
+      runtimeHelpers: true
     }),
     resolve({
       jsnext: true,

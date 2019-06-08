@@ -454,8 +454,8 @@
 
 "@babel/plugin-external-helpers@^7.2.0":
   version "7.2.0"
-  resolved "https://registry.npm.taobao.org/@babel/plugin-external-helpers/download/@babel/plugin-external-helpers-7.2.0.tgz#7f4cb7dee651cd380d2034847d914288467a6be4"
-  integrity sha1-f0y33uZRzTgNIDSEfZFCiEZ6a+Q=
+  resolved "https://registry.yarnpkg.com/@babel/plugin-external-helpers/-/plugin-external-helpers-7.2.0.tgz#7f4cb7dee651cd380d2034847d914288467a6be4"
+  integrity sha512-QFmtcCShFkyAsNtdCM3lJPmRe1iB+vPZymlB4LnDIKEBj2yKQLQKtoxXxJ8ePT5fwMl4QGg303p4mB0UsSI2/g==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
@@ -1452,6 +1452,13 @@
   version "7.4.4"
   resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.4.4.tgz#dc2e34982eb236803aa27a07fea6857af1b9171d"
   integrity sha1-3C40mC6yNoA6onoH/qaFevG5Fx0=
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
+"@babel/runtime@^7.4.5":
+  version "7.4.5"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.5.tgz#582bb531f5f9dc67d2fcb682979894f75e253f12"
+  integrity sha512-TuI4qpWZP6lGOGIuGWtp9sPluqYICmbk8T/1vpSysqJxRPkudh/ofFWyqdcMsDf2s7KvDL4/YHgKyvcS3g9CJQ==
   dependencies:
     regenerator-runtime "^0.13.2"
 

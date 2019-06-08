@@ -3,6 +3,7 @@ const {
   FILE_NOT_EXIST
 } = require('./utils/error').codes
 
+const rrreol = require('@rrreol/core')
 const fs = require('fs')
 const path = require('path')
 const chalk = require('chalk')

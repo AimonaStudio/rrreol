@@ -3,6 +3,22 @@ import assert from 'assert'
 import * as os from 'os'
 
 const platform = os.platform()
+let from = ''
+
+switch (platform) {
+  case 'linux':
+    // Linux
+    from = /\n/
+    break
+  case 'win32':
+    // Windows
+    from = /\r\n/
+    break
+  case 'darwin':
+    // MacOS
+    from = /\r/
+    break
+}
 
 export const compileCommandRule = {
   '.cpp': 'g++',
@@ -18,23 +34,10 @@ export const getFileName = name => {
 
 export const CLRFtoLF = str => str.toString().replace(/\r\n/g, '\n')
 
+export const systemEnterSuffix = from
+
 export const renderString = str => {
   assert(typeof str === 'string', TypeError('str must be string'))
-  let from = ''
-  switch (platform) {
-    case 'linux':
-      // Linux
-      from = /\n/
-      break
-    case 'win32':
-      // Windows
-      from = /\r\n/
-      break
-    case 'darwin':
-      // MacOS
-      from = /\r/
-      break
-  }
   return from[Symbol.replace](str, '\n')
 }
 

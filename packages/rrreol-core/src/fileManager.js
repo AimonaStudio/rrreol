@@ -69,7 +69,8 @@ export class FileManager extends EventEmitter {
       prettyLog({ prefix: 'error', level: 'error' })
       throw TypeError(`target line ${line} is empty`)
     } else {
-      return renderString(this.__content[line - 1])
+      // fixme: why azure-pipeline always crash on this line which have char '\n'
+      return renderString(this.__content[line - 1]).replace('\n', '')
     }
   }
 

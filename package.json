@@ -24,6 +24,7 @@
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
     "@commitlint/travis-cli": "^7.5.2",
+    "@types/is": "^0.0.21",
     "@types/jest": "^24.0.11",
     "@types/node": "^11.13.8",
     "babel-eslint": "^10.0.1",

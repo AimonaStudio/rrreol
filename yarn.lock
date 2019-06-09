@@ -2843,6 +2843,11 @@
   resolved "https://registry.npm.taobao.org/@types/is-number/download/@types/is-number-3.0.1.tgz#94d2c21efb00a8650e7f1af1da735a829a861295"
   integrity sha1-lNLCHvsAqGUOfxrx2nNagpqGEpU=
 
+"@types/is@^0.0.21":
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/@types/is/-/is-0.0.21.tgz#1f4b0afe428991564abbd890844eba2458bc83e6"
+  integrity sha512-j2v73mj4I47lOaA8r+5tknsgsqlRPDN224sS0Y7ORzlx3AXxqL6RhK/BRhEMP98RJIVW7WTnXZ9ZqQSNdWWuwg==
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.1"
   resolved "https://registry.npm.taobao.org/@types/istanbul-lib-coverage/download/@types/istanbul-lib-coverage-2.0.1.tgz#42995b446db9a48a11a07ec083499a860e9138ff"

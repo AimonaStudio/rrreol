@@ -1,8 +1,7 @@
 const packageJson = require('../package')
-const {
-  FILE_NOT_EXIST
-} = require('./utils/error').codes
 
+const assert = require('assert')
+const is = require('is')
 const rrreol = require('@rrreol/core')
 const fs = require('fs')
 const path = require('path')
@@ -62,31 +61,20 @@ let outputs = command.output.split(',')
 
 // read native config
 if (
-  typeof command.config === 'boolean' &&
+  is.boolean(command.config) &&
   command.config === true
 ) {
   const configPath = path.resolve('rrreol.config.js')
-  if (!fs.existsSync(configPath)) {
-    debug('not exist file path:' + configPath)
-    FILE_NOT_EXIST(
-      command.options.find(t => /^-c/.test(t.flags)).flags,
-      configPath
-    )
-  }
+  assert(fs.existsSync(configPath), 'file not exist')
   const rrreolConfig = require(configPath)
   debug(rrreolConfig)
-} else if (typeof command.config === 'string') {
+  config = { ...rrreolConfig }
+} else if (is.string(command.config)) {
   const configPath = path.resolve(command.config)
-  if (!fs.existsSync(configPath)) {
-    debug('not exist file path:' + configPath)
-    FILE_NOT_EXIST(
-      command.options.find(t => /^-c/.test(t.flags)).flags,
-      configPath
-    )
-  } else {
-    const rrreolConfig = require(command.config)
-    config = { ...config, ...rrreolConfig }
-  }
+  const exist = fs.existsSync(configPath)
+  assert(exist, 'file not exist')
+  const rrreolConfig = require(command.config)
+  config = { ...config, ...rrreolConfig }
 }
 
 debug(config)
@@ -102,9 +90,16 @@ Array
     }
   })
 
-run(root)
+if (inputs.length !== outputs.length) {
+  console.warn('inputs and outputs is not same length')
+  console.warn('we will ignore more content')
+}
 
-function run (root) {
+(async () => {
+  await run(root)
+})()
+
+async function run (root) {
   [
     inputs = [...inputs],
     outputs = [...outputs]
@@ -125,6 +120,13 @@ function run (root) {
   debug(chalk.blueBright('outputs: ') + outputs)
 
   // todo: need @rrreol/core to finish further
+  const { Judge } = rrreol
+  const judge = new Judge()
+  for (let i = 1; i <= inputs.length; i++) {
+    await judge.in(i).readPath(inputs[i])
+    await judge.out(i).readPath(outputs[i])
+  }
+  await judge.exec()
 }
 
 // only return file paths

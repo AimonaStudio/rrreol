@@ -3,22 +3,6 @@ import assert from 'assert'
 import * as os from 'os'
 
 const platform = os.platform()
-let from = ''
-
-switch (platform) {
-  case 'linux':
-    // Linux
-    from = /\n/
-    break
-  case 'win32':
-    // Windows
-    from = /\r\n/
-    break
-  case 'darwin':
-    // MacOS
-    from = /\r/
-    break
-}
 
 export const compileCommandRule = {
   '.cpp': 'g++',
@@ -34,11 +18,43 @@ export const getFileName = name => {
 
 export const CLRFtoLF = str => str.toString().replace(/\r\n/g, '\n')
 
+export const renderStringBack = str => {
+  assert(typeof str === 'string', new TypeError('str must be string'))
+  let replacer = ''
+  switch (platform) {
+    case 'win32':
+      replacer = '\r\n'
+      break
+    case 'darwin':
+      replacer = '\r'
+      break
+    case 'linux':
+      return str
+  }
+  return str.replace(/\n/g, replacer)
+}
+
+let from = ''
+switch (platform) {
+  case 'linux':
+    // Linux
+    from = /\n/g
+    break
+  case 'win32':
+    // Windows
+    from = /\r\n/g
+    break
+  case 'darwin':
+    // MacOS
+    from = /\r/g
+    break
+}
+
 export const systemEnterSuffix = from
 
 export const renderString = str => {
-  assert(typeof str === 'string', TypeError('str must be string'))
-  return from[Symbol.replace](str, '\n')
+  assert(typeof str === 'string', new TypeError('str must be string'))
+  return str.replace(from, '\n')
 }
 
 export const renameSuffix = (str, suffix) => str.replace(extname(str), '.' + suffix.toString())

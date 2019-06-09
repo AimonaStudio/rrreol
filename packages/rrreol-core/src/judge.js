@@ -110,6 +110,7 @@ export class Judge extends EventEmitter {
     prettyLog('file', { prefix: 'Compiling', level: 'notice' })
     const path = await Compiler.compile(this.__path, outputPath)
     prettyLog('file', { prefix: 'Compiled', level: 'notice' })
+    this.emit('finish_compile')
     const runner = new Runner(path)
 
     let index = 0

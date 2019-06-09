@@ -30,15 +30,15 @@ jobs:
       - template: ./linux.yml
       - template: ./rrreol.yml
 
-  - job: windows_CI_Tests
-    displayName: Windows  CI Tests
-    pool:
-      vmImage: windows-2019
-    strategy:
-      matrix:
-        node_10_x:
-          node_version: 10.x
-
-    steps:
-      - template: ./windows.yml
-      - template: ./rrreol.yml
+#  - job: windows_CI_Tests
+#    displayName: Windows  CI Tests
+#    pool:
+#      vmImage: windows-2019
+#    strategy:
+#      matrix:
+#        node_10_x:
+#          node_version: 10.x
+#
+#    steps:
+#      - template: ./windows.yml
+#      - template: ./rrreol.yml

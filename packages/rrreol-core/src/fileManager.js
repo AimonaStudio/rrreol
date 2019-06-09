@@ -70,7 +70,7 @@ export class FileManager extends EventEmitter {
       throw TypeError(`target line ${line} is empty`)
     } else {
       // fixme: why azure-pipeline always crash on this line which have char '\n'
-      return renderString(this.__content[line - 1]).replace('\n', '')
+      return renderString(this.__content[line - 1])
     }
   }
 

@@ -2,8 +2,7 @@ import chalk from 'chalk'
 
 const assert = require('assert')
 
-var openLog
-openLog = process.env.NODE_ENV !== 'test'
+global.openLog = process.env.NODE_ENV !== 'test'
 
 export const fillColor = (message, level) => {
   assert(typeof message === 'string')
@@ -30,7 +29,7 @@ export function prettyLog (message, conf) {
     prefix: '',
     level: 'notice'
   }, conf || (typeof message === 'object' && message) || {})
-  if (openLog) {
+  if (global.openLog) {
     console.log(`${fillColor(prefix, level)}: ${message}`)
   }
 }

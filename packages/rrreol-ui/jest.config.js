@@ -1,5 +1,8 @@
 const base = require('../../jest.config')
 
 module.exports = {
-  ...base
+  ...base,
+  collectCoverageFrom: [
+    'src/**/*(!index|bootstrap).js'
+  ]
 }

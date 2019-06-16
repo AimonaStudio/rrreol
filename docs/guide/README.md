@@ -12,7 +12,7 @@ RRReol 由四部分组成，他们分别是
 如果您掌握 `javascript` 和 `node` 的基本知识，那么您可以这样
 
 ```javascript
-const rrreol = require('rrreol-core')
+const rrreol = require('@rrreol/core')
 const judge = new rrreol.Judge('./1.cpp')
 judge.load(__dirname, {
   input: /[0-9]+.in$/,

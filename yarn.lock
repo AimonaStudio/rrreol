@@ -8537,10 +8537,10 @@ jest-config@^24.8.0:
     pretty-format "^24.8.0"
     realpath-native "^1.1.0"
 
-jest-css-modules@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npm.taobao.org/jest-css-modules/download/jest-css-modules-2.0.0.tgz#d96b91026e292e1b5c6e7def9860de7fc734975d"
-  integrity sha1-2WuRAm4pLhtcbn3vmGDef8c0l10=
+jest-css-modules@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/jest-css-modules/-/jest-css-modules-2.1.0.tgz#9c25ebe9d0214d8f55861a442268fdd4b01b4781"
+  integrity sha512-my3Scnt6l2tOll/eGwNZeh1KLAFkNzdl4MyZRdpl46GO6/93JcKKdTjNqK6Nokg8A8rT84MFLOpY1pzqKBEqMw==
   dependencies:
     identity-obj-proxy "3.0.0"
 

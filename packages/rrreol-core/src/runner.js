@@ -17,18 +17,17 @@ export class Runner extends EventEmitter {
 
   run = this.exec
 
-  // fixme: unused timeout
   execUnsafe = async (stdin = new FileManager(), timeout = 1000) => {
     const childProcess = cp.spawn(this.filePath)
     childProcess.stdin.write(stdin.content)
     // need a enter to continue
     childProcess.stdin.write('\n')
     return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        childProcess.kill('SIGXCPU')
+      }, timeout)
       childProcess.on('exit', () => {
-        let res = childProcess.stdout.read()
-        if (res == null) {
-          res = ''
-        }
+        const res = childProcess.stdout.read() || ''
         resolve(renderString(CLRFtoLF(res.toString())))
       })
 

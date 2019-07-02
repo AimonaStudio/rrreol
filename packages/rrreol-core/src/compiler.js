@@ -1,13 +1,11 @@
 import { spawn } from 'child_process'
 import { isString } from 'lodash'
-// import { parseFileSuffix } from './utils'
-import { curry } from 'ramda'
 
 export function Compiler () {
   throw Error('static class shouldn\'t invoke new')
 }
 
-Compiler.compile = curry(async (path, output) => {
+Compiler.compile = async (path, output, ...args) => {
   if (!isString(path) || !isString(output)) {
     return Promise.reject(new TypeError('path or output is not string'))
   }
@@ -25,6 +23,6 @@ Compiler.compile = curry(async (path, output) => {
       resolve(output)
     })
   })
-})
+}
 
 export default Compiler

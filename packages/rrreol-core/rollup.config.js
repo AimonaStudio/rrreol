@@ -21,7 +21,8 @@ export default {
     resolve({
       jsnext: true,
       main: true,
-      modulesOnly: true
+      modulesOnly: true,
+      preferBuiltins: true
     }),
     commonjs({
       exclude: 'src/**',

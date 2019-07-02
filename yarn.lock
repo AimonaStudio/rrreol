@@ -2838,10 +2838,10 @@
   resolved "https://registry.npm.taobao.org/@types/http-assert/download/@types/http-assert-1.4.0.tgz#41d173466e396e99a14d75f7160cc997f2f9ed8b"
   integrity sha1-QdFzRm45bpmhTXX3FgzJl/L57Ys=
 
-"@types/is-number@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.npm.taobao.org/@types/is-number/download/@types/is-number-3.0.1.tgz#94d2c21efb00a8650e7f1af1da735a829a861295"
-  integrity sha1-lNLCHvsAqGUOfxrx2nNagpqGEpU=
+"@types/is-number@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@types/is-number/-/is-number-7.0.0.tgz#657229b7b1f7a66fc13fc0abe48637634f91ecd6"
+  integrity sha512-22yxG9vfSLKP779bHhEX2qkyaKsR9oIqaJDmhFztgGJTziUWVqNSvv9/s9t6NtLXaYuwa5eeGauyFvbLzAA85A==
 
 "@types/is@^0.0.21":
   version "0.0.21"

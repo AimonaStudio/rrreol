@@ -119,7 +119,6 @@ async function run (root) {
   debug(chalk.blueBright('inputs: ') + inputs)
   debug(chalk.blueBright('outputs: ') + outputs)
 
-  // todo: need @rrreol/core to finish further
   const { Judge } = rrreol
   const judge = new Judge()
   for (let i = 1; i <= inputs.length; i++) {

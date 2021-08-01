@@ -14,7 +14,7 @@
   "dependencies": {
     "@material-ui/core": "^4.0.1",
     "@material-ui/styles": "^4.4.3",
-    "@material-ui/system": "^3.0.0-alpha.2",
+    "@material-ui/system": "^4.12.1",
     "memoize-one": "^5.0.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
